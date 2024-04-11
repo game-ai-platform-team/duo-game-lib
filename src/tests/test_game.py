@@ -1,8 +1,8 @@
 from unittest import TestCase
 from unittest.mock import Mock, call
 
-from game_state import GameState
-from services.game import Game
+from duo_game_lib.game import Game
+from duo_game_lib.game_state import GameState
 
 
 class TestGame(TestCase):
