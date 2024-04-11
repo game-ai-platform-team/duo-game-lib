@@ -1,6 +1,6 @@
 import json
 
-from game_state import GameState
+from duo_game_lib.game_state import GameState
 
 
 class MoveMetadata:

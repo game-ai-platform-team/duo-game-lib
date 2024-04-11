@@ -4,10 +4,10 @@ from contextlib import AbstractContextManager
 from types import TracebackType
 from typing import Any
 
-from entities.judge import Judge
-from entities.move import Move, MoveMetadata
-from entities.players.player import Player
-from game_state import GameState
+from duo_game_lib.game_state import GameState
+from duo_game_lib.judge import Judge
+from duo_game_lib.move import Move, MoveMetadata
+from duo_game_lib.player import Player
 
 
 class Game(AbstractContextManager):
