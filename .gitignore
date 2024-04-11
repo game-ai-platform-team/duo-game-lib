@@ -1,0 +1,13 @@
+#  Python
+__pycache__/
+.pytest_cache/
+dist
+
+# Temp files
+*.tmp
+
+# Coverage
+**/*coverage*
+!.coveragerc
+
+.idea

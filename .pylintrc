@@ -1,0 +1,11 @@
+[MAIN]
+disable=
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    too-few-public-methods,
+ignore=tests
+load-plugins = pylint.extensions.mccabe
+
+[TYPECHECK]
+ignored-classes=BaseBoard
