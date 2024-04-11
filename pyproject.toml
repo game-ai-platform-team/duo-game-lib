@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Logic for turn-based duo game"
 authors = ["game-ai-platform-team"]
 readme = "README.md"
+packages = [{ include = "duo_game_lib/**/*.py", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
