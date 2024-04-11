@@ -1,0 +1,17 @@
+name: CI/CD
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: CI
+    permissions:
+      contents: write
+      
+    uses: game-ai-platform-team/workflows/.github/workflows/ci_python.yml@main
+
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
