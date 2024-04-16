@@ -15,6 +15,10 @@ class TestGame(TestCase):
             self.io_mock, self.player1_mock, self.player2_mock, self.judge_mock
         )
 
+        self.player1_mock.get_and_reset_current_logs.return_value = "player1 logs"
+        self.player2_mock.get_and_reset_current_logs.return_value = "player2 logs"
+        self.judge_mock.analyze.return_value = 100
+
     def test_play_continue_continues_game(self):
         self.player1_mock.play.side_effect = ["a", "b", "c"]
         self.player2_mock.play.side_effect = [1, 2, 3]
@@ -108,12 +112,11 @@ class TestGame(TestCase):
         self.game.play(5)
 
         calls = self.io_mock.call_args_list
-        move_args = list(map(lambda call: call.args[0].move, calls[:-1]))
+        lines = [call.args[0] for call in calls[:-1]]
+        expected_moves = ["a", "1", "b", "2", "c"]
 
-        self.assertEqual(
-            move_args,
-            ["a", 1, "b", 2, "c"],
-        )
+        for i, line in enumerate(lines):
+            self.assertIn(expected_moves[i], line)
 
     def test_play_logs_correct_states(self):
         states = [GameState.CONTINUE] * 4
@@ -127,9 +130,10 @@ class TestGame(TestCase):
         self.game.play(5)
 
         calls = self.io_mock.call_args_list
-        state_args = list(map(lambda call: call.args[0].state, calls[:-1]))
+        lines = [call.args[0] for call in calls[:-1]]
 
-        self.assertEqual(state_args, states)
+        for i, line in enumerate(lines):
+            self.assertIn(str(states[i]), line)
 
     def test_out_of_turns_gamestate_is_max_turns(self):
         self.player1_mock.play.side_effect = ["a", "b", "c"]
