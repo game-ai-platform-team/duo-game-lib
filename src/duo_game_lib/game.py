@@ -81,7 +81,7 @@ class Game(AbstractContextManager):
                     player.get_and_reset_current_logs(),
                 ),
             )
-            self.__logger(move_object)
+            self.__logger(f"MOVE: {move_object}")
 
             previous_move = move
 
