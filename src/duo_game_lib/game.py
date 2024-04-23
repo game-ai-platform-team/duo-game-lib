@@ -62,7 +62,7 @@ class Game(AbstractContextManager):
             player = self.__players[i % 2]
             move, elapsed_time = self.__play_one_move(player, previous_move)
 
-            if elapsed_time >= 1000:
+            if elapsed_time >= 60000:
                 state = GameState.TIMEOUT
                 continue
 
